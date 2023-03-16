@@ -60,6 +60,10 @@ Possiamo notare che restituisce 0 alla fine della sua esecuzione, che in C++ vie
 ### TIPI PRIMITIVI O FONDAMENTALi
 
 Sono i tipi che consentono di rappresentare informazioni semplici, come numeri, testo, booleani etc.
+I tipi primitivi hanno un limite in byte e in grandezza numerica, che si posson ottenere con i comandi
+        
+        sizeof(type); //restituisce il risultato in byte
+        std::numeric_limits<type>, //collegato alle funzioni max() e min() tramite :: ci restituisce il massimo e il minimo del tipo indicato tra <>
 
 #### NUMERI INTERI
 
@@ -72,10 +76,34 @@ Il tipo <b>int</b> è utilizzato per rappresentare numeri interi, positivi o neg
 - signed
 - unsigned
 
-#### CARATTER
+#### CARATTERI
 
-Il tipo <b>char</b> è utilizzato per la rappres
+Il tipo <b>char</b> è utilizzato per la rappresentazione di singoli caratteri o stringhe di testo.
+È possibile utilizzare i modificatori di segno, ma non di dimensione.
 
+#### VALORI BOOLEANi
+
+Il tipo <b>bool</b> viene usato epr rappresentare due valori, vero (true) e falso (false).
+
+#### VOID
+
+Il tipo <b>void</b> è utilizzato per indicare un set di valori vuoto o indefinito. È un tipo incompleto, nel senso che non può essere allocato, non si possono usare reference o array di elementi void. È quindi definibile solo come puntatore o come tipo di ritorno per funzioni che non restituiscono un risultato.
+
+### TIPI COMPOSTI
+Sono tipi costituiti a partire da quelli fondamentali. Sono tipicamente definiti tramite costrutti struct o class e template.
+
+#### STRINGHE
+Uno dei più importanti tipi composti, nativo della libreria standard di C++, la String library, è il tipo string.
+Questo consente di manipolare sequenze di caratteri in modo più agevole rispetto alla gestione di un array di char, grazie alla definizione di alcuni metodi che ci consentono di stabilire la dimensione della stringa, concatenare stringhe differenti e cercare o sostituire sequenze di caratteri.
+
+Esistono tante varianti del tipo string, a seconda del tipo base sottostante:
+
+        std:string(char)
+        std:wstring(wchar_t)
+        std:u16string(char16_t)
+        std:u32string(char32_t)
+        
+Per utilizzare la libreria string è necessario includere il relativo header file con la seguente istruzione nei propri sorgenti.
 
 ## PROCESSO DI COMPILAZIONE
 
