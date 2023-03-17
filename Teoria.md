@@ -93,7 +93,7 @@ Il tipo <b>void</b> è utilizzato per indicare un set di valori vuoto o indefini
 Sono tipi costituiti a partire da quelli fondamentali. Sono tipicamente definiti tramite costrutti struct o class e template.
 
 #### STRINGHE
-Uno dei più importanti tipi composti, nativo della libreria standard di C++, la String library, è il tipo string.
+Uno dei più importanti tipi composti, nativo della libreria standard di C++, la String library, è il tipo <b>string</b>.
 Questo consente di manipolare sequenze di caratteri in modo più agevole rispetto alla gestione di un array di char, grazie alla definizione di alcuni metodi che ci consentono di stabilire la dimensione della stringa, concatenare stringhe differenti e cercare o sostituire sequenze di caratteri.
 
 Esistono tante varianti del tipo string, a seconda del tipo base sottostante:
@@ -104,6 +104,94 @@ Esistono tante varianti del tipo string, a seconda del tipo base sottostante:
         std:u32string(char32_t)
         
 Per utilizzare la libreria string è necessario includere il relativo header file con la seguente istruzione nei propri sorgenti.
+
+    #include <string>
+
+### ENUMERAZIONI
+
+Un <b>enumerazione</b> è un tipo che può assumere un valore in base a un insieme ristrerro di valori interi costanti, alla quale viene associato un nome.
+La coppia nome-costante è detta <b>enumeratore</b>.
+Per definire un enumerazione si utilizza la parola chiave <b>enum</b>
+
+        enum nomeIdentificativo{
+            enumeratore,
+            enumeratore,
+            ...,
+            enumeratore
+            };
+            
+Con questa sintassi, non abbiamo bisogno di definire il valore di ciascun enumeratore, in quanto viene assegnato automaticamente, partendo da 0.
+Se vogliamo possiamo assegnare un valore al nostro enumeratore seguendolo da un uguale.
+
+        enum nomeIdentificativo{
+            enumeratore1
+            enumeratore2 = 10,
+            enumeratore3
+            enumeratore4 = 54,
+            enumeratore5
+            };
+
+Se assegniamo a un determinato enumeratore un valore, e l'enumeratore seguente non ha nessun valore assegnato, allora assumerà il valore seguente all'enumeratore precedente. Nell'esempio di prima avremo quindi:
+    
+    enumeratore1 = 0
+    enumeratore2 = 10
+    enumeratore3 = 11
+    enumeratore4 = 54
+    enumeratore5 = 55
+    
+#### ENUMERAZIONI CON DEFINIZIONE ESPLICITA DEL TIPO SOTTOSTANTE
+
+Da C++ 11 è possibile indicare esplicitamente anche il tipo dell'enumerazione in questo modo
+
+        enum nomeIdentificativo : tipo{
+            enumeratore = valore,
+            enumeratore = valore,
+            enumeratore = valore,
+            ...,
+            enumeratore = valore
+            };
+            
+Sono ammessi i tipi char, int, short int, long int, long long, e bool
+I tipi float, double e long double non sono ammessi e producono errore di compilazione se usati.
+Con i char puo ammettere valori anche numerici purchè siano rappresentabili in 8 bit
+
+Grazie alla definizione esplicita del tipo possiamo dichiarare in precedenza un enumerazione e inizializzarla in un secondo momento in una parte diversa del codice.
+
+        enum frutta : int;
+        
+Gli enumeratori senza ambito di visibilità sono implicitamente convertiti a variabili di tipo numerico quando necessario:
+
+        enum colore : {rosso, verde, blu};
+        int c1 = rosso; // ok, 'colore' non è una enum class
+        colore c2 = 2; // errore: la conversione implicita non è bidirezionale!
+        colore c3 = (colore) 2; // ok
+        
+#### ENUMERAZIONE CON CAMPO DI VISIBILITÀ
+Quando definiamo una enumerazione però possiamo incorrere in dei problemi dato dal fatto che i nomi degli identificatori e quelli delle variabili non possono essere uguali in quanto entrano in conflitto. Da C++ 11 però sono state introdotte le enumerazioni con campo di visibilità che permettono dunque di definire degli enumeratori non utilizzabili nel resto del codice se non tramite un apposito comando.
+La definizione di questo tipo di enumerazioni è la seguente:
+        
+        enum class nomeIdentificativo : tipo
+            enumeratore 1,
+            enumeratore 2,
+            ...,
+            enumeratore3
+            };
+            
+Per utilizzare un enumeratore contenuto nell'enumerazione dobbiamo chiamarlo utilizzando l'identificativo dell'enumerazione che noi abbiamo assegnato, però bisogna convertire il nostro enumeratore al tipo desiderato, altrimenti non funzionerà:
+
+        std::cout<< (cast) nomeIdentificativo::enumeratore1<<endl;
+
+Allo stesso modo possiamo assegnare un valore dell'enumeratore a una variabile
+
+        int x = (cast) enum::var
+
+Possiamo ora creare una variabile del tipo enum creato assegnandogli un valore
+
+        enum class forma{ quadrato, cerchio, triangolo};
+        forma f1 = fomra::cerchio;
+
+
+
 
 ## PROCESSO DI COMPILAZIONE
 
