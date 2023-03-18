@@ -63,7 +63,7 @@ Sono i tipi che consentono di rappresentare informazioni semplici, come numeri, 
 I tipi primitivi hanno un limite in byte e in grandezza numerica, che si posson ottenere con i comandi
         
     sizeof(type); //restituisce il risultato in byte
-        std::numeric_limits<type>, //collegato alle funzioni max() e min() tramite :: ci restituisce il massimo e il minimo del tipo indicato tra <>
+    std::numeric_limits<type>, //collegato alle funzioni max() e min() tramite :: ci restituisce il massimo e il minimo del tipo indicato tra <>
 
 #### NUMERI INTERI
 
