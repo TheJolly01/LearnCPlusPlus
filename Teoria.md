@@ -157,14 +157,14 @@ Con i char puo ammettere valori anche numerici purchè siano rappresentabili in 
 
 Grazie alla definizione esplicita del tipo possiamo dichiarare in precedenza un enumerazione e inizializzarla in un secondo momento in una parte diversa del codice.
 
-        enum frutta : int;
+    enum frutta : int;
         
 Gli enumeratori senza ambito di visibilità sono implicitamente convertiti a variabili di tipo numerico quando necessario:
 
-        enum colore : {rosso, verde, blu};
-        int c1 = rosso; // ok, 'colore' non è una enum class
-        colore c2 = 2; // errore: la conversione implicita non è bidirezionale!
-        colore c3 = (colore) 2; // ok
+    enum colore : {rosso, verde, blu};
+    int c1 = rosso; // ok, 'colore' non è una enum class
+    colore c2 = 2; // errore: la conversione implicita non è bidirezionale!
+    colore c3 = (colore) 2; // ok
         
 #### ENUMERAZIONE CON CAMPO DI VISIBILITÀ
 Quando definiamo una enumerazione però possiamo incorrere in dei problemi dato dal fatto che i nomi degli identificatori e quelli delle variabili non possono essere uguali in quanto entrano in conflitto. Da C++ 11 però sono state introdotte le enumerazioni con campo di visibilità che permettono dunque di definire degli enumeratori non utilizzabili nel resto del codice se non tramite un apposito comando.
