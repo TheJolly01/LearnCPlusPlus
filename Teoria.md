@@ -52,7 +52,7 @@ I metodi sono definiti con il tipo di ritorno seguito dal nome del metodo e lpar
 In C++ il metodo main ha tipo di ritono int.
 
     int main(){
-      return 0;
+        return 0;
     }
 Possiamo notare che restituisce 0 alla fine della sua esecuzione, che in C++ viene gestito come terminazione normale del programma.
 
