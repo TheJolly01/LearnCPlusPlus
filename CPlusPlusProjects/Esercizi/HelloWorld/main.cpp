@@ -3,19 +3,19 @@
  * Hello World!
  * */
 
-#include <iostream>
+#include <iostream> //libreria per input output
 
 //definizione classe Greater
 class Greater{
 
-public:
+public: //metodo pubblico
     static void sayHello(){
-        std::cout<<"Hello World!"<<std::endl;
+        std::cout<<"Hello World!"<<std::endl; //stampa frase
     }
 };
-int main(){
-    Greater g;
-    g.sayHello();
-    return 0;
+int main(){ //metodo principale 
+    Greater g; //crea oggetto g di tipo Greater
+    g.sayHello(); //usa metodo sayHello di g
+    return 0; //restituisci 0 per chiudere il programma
 }
 
