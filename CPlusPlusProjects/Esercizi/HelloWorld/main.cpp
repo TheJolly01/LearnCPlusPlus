@@ -8,9 +8,15 @@
 //definizione classe Greater
 class Greater{
 
+<<<<<<< Updated upstream
 public: //metodo pubblico
     static void sayHello(){
         std::cout<<"Hello World!"<<std::endl; //stampa frase
+=======
+public:
+    void sayHello(){
+        std::cout<<"Hello World!"<<std::endl;
+>>>>>>> Stashed changes
     }
 };
 int main(){ //metodo principale 

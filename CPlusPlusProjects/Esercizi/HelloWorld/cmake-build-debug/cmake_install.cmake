@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/HelloWorld
+# Install script for directory: C:/Users/delri/Documents/GitHub/LearnCPlusPlus/CPlusPlusProjects/Esercizi/HelloWorld
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/HelloWorld/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/delri/Documents/GitHub/LearnCPlusPlus/CPlusPlusProjects/Esercizi/HelloWorld/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

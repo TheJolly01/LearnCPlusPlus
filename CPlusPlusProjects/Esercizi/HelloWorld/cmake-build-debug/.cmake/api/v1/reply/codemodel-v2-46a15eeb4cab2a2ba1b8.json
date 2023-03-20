@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/HelloWorld/cmake-build-debug",
-		"source" : "C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/HelloWorld"
+		"build" : "C:/Users/delri/Documents/GitHub/LearnCPlusPlus/CPlusPlusProjects/Esercizi/HelloWorld/cmake-build-debug",
+		"source" : "C:/Users/delri/Documents/GitHub/LearnCPlusPlus/CPlusPlusProjects/Esercizi/HelloWorld"
 	},
 	"version" : 
 	{
