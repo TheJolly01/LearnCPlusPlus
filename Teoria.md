@@ -190,7 +190,67 @@ Possiamo ora creare una variabile del tipo enum creato assegnandogli un valore
     enum class forma{ quadrato, cerchio, triangolo};
     forma f1 = fomra::cerchio;
 
+### PUNTATORI
 
+    tipo* identificatore;
+    identificatore = new tipo;
+    delete identificatore;
+        
+Nella prima riga possiamo vedere la dichiarazione di un puntatore, composta dal tipo, dal segno * e dal nome dell'identificatore.
+
+Nella seconda riga invece possiamo vedere come quel puntatore viene allocato uno spazio abbastanza grande da contenere un int e dunque inizializzato.
+
+Nella terza riga, tramite la parola chiave delete possiamo cancellare il puntatore, liberando la memoria nello heap.
+
+Accedere a un puntatore non inizializzato o cancellato può portare a comportamenti imprevedibili del compilatore, ma è buona norma cancellare questi puntatori per preservare l'efficienza e la stabilità del programma.
+È buona norma cancellare smpre i puntatori anche perchè se un puntatore viene eliminato automaticamente dallo stack, esso occuperà comunque memoria che sarà inutilizzabile fino alla fine del programma, andando incontro a un memory leak!
+
+Se si vuole inizializzare un puntatore senza dargli un valore, anzichè utilizzare lo 0 o la macro NULL, bisogna utilizzare la keyword nullptr
+
+    int* p = nullptr;
+    p = new int;
+        
+
+
+#### SUDDIVISIONE MEMORIA
+
+- STACK
+- HEAP
+- BSS SEGMENT - può cambiare durante l'esecuzione
+- DATA SEGMENT - può cambiare durante l'esecuzione
+- READ ONLY DATA SEGMENT - non cambia durente l'esecuzione
+- CODE SEGMENT - non cambia durente l'esecuzione
+
+##### STACK
+Lo stack è una struttura dati di tipo lista dove gli elementi sono accessibili con una politica LIFO. Gli elementi dello stack sono detti stack frame e ognuno di essi contiene tutte le variabili definite in un blocco compreso tra parentesi graffe.
+Durante l'esecuzione del programma lo stack frame in testa è quello relativo al blocco che contiene l'istruzione correntemente in fase di esecuzione, mentre quelli successivi corrispondono ai blocchi esterni secondo il loro ordine di annidamento.
+Le operazioni di allocazione e distruzione dello stack sono molto rapide. Tuttavia lo stack ha un limite preciso, che varia in base a tanti fattori. Quando si supera questo limite si va incontro a un errore, chiamato stack overflow. Quando vogliamo tenere in memoria una grande quantità di dati quindi ci affidiamo all'heap.
+
+##### HEAP
+Heap ignifica quantità, ed è una grande area di memoria virtuale riservata al programma.
+Per gestire la memoria dello heap serve far ricorso a istruzioni particolari che necessitano l'utilizzo di puntatori.
+Anche un heap ha una memoria limitata, pertanto una corretta gestione della memoria è fondamentale.
+L'heap è meno efficiente rispetto allo stack ma è indispensabile per la gestione della memoria estesa.
+
+#### Operatori di referenziazione e dereferenziazione
+
+##### REFERENZIAZIONE
+Per assegnare, a un puntatore, un determinato valore non possiamo passargli il valore effettivo, in quanto il puntatore è un tipo che punta alla locazione di memoria del valore che punta. Quindi dovremo dargli un indirizzo di memoria collegato a quel valore. Per fare ciò utilizziamo l'operatore unario di referenziazione <b>&</b>, che restituisce l'indirizzo del dato a cui viene applicato.
+      
+    int a = 1;
+    int *ptr = &a;
+
+##### DEREFERENZIAZIONE
+L'operatore contrario alla referenziazione, quindi quello che passa da un puntatore il valore che esso contiene, è l'operatore di deferenziazione <b>*</b>
+
+    int b = *ptr;
+
+##### LVALUE e RVALUE
+Generalmente un lvalue è quell'elemento che si trova a sinistra di un operatore di assegnazione, mentre l'rvalue si trova a destra. 
+Per fare più chiarezza un lfavlue rappresenta sempre un'entità che occuna una locazione di memoria identificabile tramite un indirizzo.
+Un rvalue invece è tutto il resto, come:
+- valori temporanei, che sono cariati nei registri della CPU come operandi o risultati intermedi delle istruzioni
+- valori immediati, cioè tutti i valori numerici incapsulati direttamente nel flusso di istruzioni
 
 
 ## PROCESSO DI COMPILAZIONE
