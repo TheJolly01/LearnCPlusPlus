@@ -236,21 +236,24 @@ L'heap è meno efficiente rispetto allo stack ma è indispensabile per la gestio
 
 ##### REFERENZIAZIONE
 Per assegnare, a un puntatore, un determinato valore non possiamo passargli il valore effettivo, in quanto il puntatore è un tipo che punta alla locazione di memoria del valore che punta. Quindi dovremo dargli un indirizzo di memoria collegato a quel valore. Per fare ciò utilizziamo l'operatore unario di referenziazione <b>&</b>, che restituisce l'indirizzo del dato a cui viene applicato.
+
       
     int a = 1;
-    int *ptr = &a;
+    int* ptr = &a; // dereferenziazione di una variabile
+    int** ptr2ptr = &ptr; // dereferenziazione di un puntatore
+    
+    int**ptr2ptr = &(&a) // errore!
+
+L'operatore non può apparire a sinistra dell'operatore di assegnamento, e non può essere applicato 2 volte di fila.
 
 ##### DEREFERENZIAZIONE
 L'operatore contrario alla referenziazione, quindi quello che passa da un puntatore il valore che esso contiene, è l'operatore di deferenziazione <b>*</b>
 
-    int b = *ptr;
+    int b = *ptr; //referenziazione di un puntatore
 
-##### LVALUE e RVALUE
-Generalmente un lvalue è quell'elemento che si trova a sinistra di un operatore di assegnazione, mentre l'rvalue si trova a destra. 
-Per fare più chiarezza un lfavlue rappresenta sempre un'entità che occuna una locazione di memoria identificabile tramite un indirizzo.
-Un rvalue invece è tutto il resto, come:
-- valori temporanei, che sono cariati nei registri della CPU come operandi o risultati intermedi delle istruzioni
-- valori immediati, cioè tutti i valori numerici incapsulati direttamente nel flusso di istruzioni
+L'operatore non può apparire a destra dell'operatore di assegnamneto.
+
+Infine possiamo alternare operatori di referenziazione e di dereferenziazione, ma ciò è superfluo in quanto eseguendo un operazione di referenziazione e una di dereferenziazione otterremo il valore dell'elemento a cui stiamo effettuando le operazioni, in quanto si annullano a vicenda.
 
 
 ## PROCESSO DI COMPILAZIONE
