@@ -65,7 +65,7 @@ I tipi primitivi hanno un limite in byte e in grandezza numerica, che si posson 
     sizeof(type); //restituisce il risultato in byte
     std::numeric_limits<type>, //collegato alle funzioni max() e min() tramite :: ci restituisce il massimo e il minimo del tipo indicato tra <>
 
-#### NUMERI INTERI
+#### Numeri interi
 
 Il tipo <b>int</b> è utilizzato per rappresentare numeri interi, positivi o negativi.
 È possibile alterare la dimensione degli int tramite l'uso di alcuni modificatori:
@@ -76,23 +76,23 @@ Il tipo <b>int</b> è utilizzato per rappresentare numeri interi, positivi o neg
 - signed
 - unsigned
 
-#### CARATTERI
+#### Caratteri
 
 Il tipo <b>char</b> è utilizzato per la rappresentazione di singoli caratteri o stringhe di testo.
 È possibile utilizzare i modificatori di segno, ma non di dimensione.
 
-#### VALORI BOOLEANi
+#### Valori booleani
 
 Il tipo <b>bool</b> viene usato epr rappresentare due valori, vero (true) e falso (false).
 
-#### VOID
+#### Void
 
 Il tipo <b>void</b> è utilizzato per indicare un set di valori vuoto o indefinito. È un tipo incompleto, nel senso che non può essere allocato, non si possono usare reference o array di elementi void. È quindi definibile solo come puntatore o come tipo di ritorno per funzioni che non restituiscono un risultato.
 
 ### TIPI COMPOSTI
 Sono tipi costituiti a partire da quelli fondamentali. Sono tipicamente definiti tramite costrutti struct o class e template.
 
-#### STRINGHE
+#### Stringhe
 Uno dei più importanti tipi composti, nativo della libreria standard di C++, la String library, è il tipo <b>string</b>.
 Questo consente di manipolare sequenze di caratteri in modo più agevole rispetto alla gestione di un array di char, grazie alla definizione di alcuni metodi che ci consentono di stabilire la dimensione della stringa, concatenare stringhe differenti e cercare o sostituire sequenze di caratteri.
 
@@ -139,7 +139,7 @@ Se assegniamo a un determinato enumeratore un valore, e l'enumeratore seguente n
     enumeratore4 = 54
     enumeratore5 = 55
     
-#### ENUMERAZIONI CON DEFINIZIONE ESPLICITA DEL TIPO SOTTOSTANTE
+#### Enumerazioni con definizione esplicita del tipo sottostante
 
 Da C++ 11 è possibile indicare esplicitamente anche il tipo dell'enumerazione in questo modo
 
@@ -166,7 +166,8 @@ Gli enumeratori senza ambito di visibilità sono implicitamente convertiti a var
     colore c2 = 2; // errore: la conversione implicita non è bidirezionale!
     colore c3 = (colore) 2; // ok
         
-#### ENUMERAZIONE CON CAMPO DI VISIBILITÀ
+#### Enumerazioni con campo di visibilità
+
 Quando definiamo una enumerazione però possiamo incorrere in dei problemi dato dal fatto che i nomi degli identificatori e quelli delle variabili non possono essere uguali in quanto entrano in conflitto. Da C++ 11 però sono state introdotte le enumerazioni con campo di visibilità che permettono dunque di definire degli enumeratori non utilizzabili nel resto del codice se non tramite un apposito comando.
 La definizione di questo tipo di enumerazioni è la seguente:
         
@@ -212,7 +213,7 @@ Se si vuole inizializzare un puntatore senza dargli un valore, anzichè utilizza
         
 
 
-#### SUDDIVISIONE MEMORIA
+#### Suddivisione memoria
 
 - STACK
 - HEAP
@@ -221,12 +222,14 @@ Se si vuole inizializzare un puntatore senza dargli un valore, anzichè utilizza
 - READ ONLY DATA SEGMENT - non cambia durente l'esecuzione
 - CODE SEGMENT - non cambia durente l'esecuzione
 
-##### STACK
+##### Stack
+
 Lo stack è una struttura dati di tipo lista dove gli elementi sono accessibili con una politica LIFO. Gli elementi dello stack sono detti stack frame e ognuno di essi contiene tutte le variabili definite in un blocco compreso tra parentesi graffe.
 Durante l'esecuzione del programma lo stack frame in testa è quello relativo al blocco che contiene l'istruzione correntemente in fase di esecuzione, mentre quelli successivi corrispondono ai blocchi esterni secondo il loro ordine di annidamento.
 Le operazioni di allocazione e distruzione dello stack sono molto rapide. Tuttavia lo stack ha un limite preciso, che varia in base a tanti fattori. Quando si supera questo limite si va incontro a un errore, chiamato stack overflow. Quando vogliamo tenere in memoria una grande quantità di dati quindi ci affidiamo all'heap.
 
-##### HEAP
+##### Heap
+
 Heap ignifica quantità, ed è una grande area di memoria virtuale riservata al programma.
 Per gestire la memoria dello heap serve far ricorso a istruzioni particolari che necessitano l'utilizzo di puntatori.
 Anche un heap ha una memoria limitata, pertanto una corretta gestione della memoria è fondamentale.
@@ -234,7 +237,8 @@ L'heap è meno efficiente rispetto allo stack ma è indispensabile per la gestio
 
 #### Operatori di referenziazione e dereferenziazione
 
-##### REFERENZIAZIONE
+##### Referenziazione
+
 Per assegnare, a un puntatore, un determinato valore non possiamo passargli il valore effettivo, in quanto il puntatore è un tipo che punta alla locazione di memoria del valore che punta. Quindi dovremo dargli un indirizzo di memoria collegato a quel valore. Per fare ciò utilizziamo l'operatore unario di referenziazione <b>&</b>, che restituisce l'indirizzo del dato a cui viene applicato.
 
       
@@ -246,7 +250,8 @@ Per assegnare, a un puntatore, un determinato valore non possiamo passargli il v
 
 L'operatore non può apparire a sinistra dell'operatore di assegnamento, e non può essere applicato 2 volte di fila.
 
-##### DEREFERENZIAZIONE
+##### Dereferenziazione
+
 L'operatore contrario alla referenziazione, quindi quello che passa da un puntatore il valore che esso contiene, è l'operatore di deferenziazione <b>*</b>
 
     int b = *ptr; //referenziazione di un puntatore
@@ -254,6 +259,88 @@ L'operatore contrario alla referenziazione, quindi quello che passa da un puntat
 L'operatore non può apparire a destra dell'operatore di assegnamneto.
 
 Infine possiamo alternare operatori di referenziazione e di dereferenziazione, ma ciò è superfluo in quanto eseguendo un operazione di referenziazione e una di dereferenziazione otterremo il valore dell'elemento a cui stiamo effettuando le operazioni, in quanto si annullano a vicenda.
+
+### VARIABILI REFERENCE
+
+Le variabili reference sono un metodo di indirizzament odella memoria alternativo all'utilizzo dei puntatori. La particolarità delle variabili reference consiste nella modialità di accesso, che maschera l'operatore di dereferenziazione necessaria per leggere o scrivere un valore nella locazione di memoria contenuta in un normale puntatore. A parte la loro definizione, per le variabili reference ci sono le stesse regole sintattiche valide per l'accesso ad una variabile oridnaria. La variabile reference però non ha una propria locazione di memoria ma punta a quella di una variabile oridnaria esistente. Perciò la loro inizializzazione deve avvnire alla dichiarazione.
+
+	int a = 1;
+	int& ref_a = a; // Dichiarazione e inizializzazione variabile reference
+	int b = 2;
+	ref_a = b; // Errore: non possiamo cambiare riferimento.
+	int& r; // errore, una variabile reference deve essere inizializzata.
+
+D'ora in poi quindi qualsiasi modifica su a e su ref_a riflettono l'una sull'altra.
+Diciamo quindi che le variabili reference sono come un nome alternativo per quelle ordinarie. Infatti vengono chiamate anche variabili alias.
+Le variabili reference e i puntatori sono molto simili, ma a volte è meglio un utilizzo di puntatori, mentre altre è meglio usare le variabili reference. Dipende dai casi.
+
+#### Tipi di variabili reference
+A differenza di una variabile ordinaria e una variabile puntatore, che sono considerate come due tipi diversi, una variabile reference è considerata dal compilatore allo stesso modo in cui è considerata la variabile ordinaria. Quindi se una variabile reference punta a una ordinaria di tipo int, la nostra variabile reference sarà di tipo int.
+
+### FUNZIONI
+Una funzione è un blocco di codice richiamabile in qualsiasi momento, utile per riutilizzare lo stess codice senza doverlo scrivere più volte.
+Questo è un esempio di dichiarazione di una funzione:
+
+	int nomeFunzione(int a, int b, int c);
+
+Il primo tipo nella dichiarazione della funzione è il tipo di ritorno, a seguire abbiamo il nome della funzione e i parametri che la funzione richiede per poter essere richiamata.
+Quando si utilizza una funzione in tante parti del codice è opportuna definirla in un header che ne contenga la sola dichiarazione. L'header poi viene richiamato con la keyword #include
+	
+	//percentuale.h
+	float percentuale(int totale, float quota);
+	-----------------------------------------------
+	//percentuale.cpp
+	#include "percentuale.h"
+	float percentuale(int totale, float quota){
+		return(totale/100.0f) * quota;
+	}
+	-----------------------------------------------
+	//main.cpp
+	#include <iostream>
+	#include "percentuale.h"
+	int main(){
+		int a = 500l
+		float b = 20.0f;
+		std::cout << percentuale(a, b) << std::endl; // 20% di 500
+		return 0;
+	}
+	
+Il return seguito da un valore o espressione è l'ultima istruzione eseguita dentro il corpo della funzione. Dopo il return la funzione si chiude e restituisce il valore indicato nel return.
+
+#### Passaggio di parametri per valore o per riferimento
+
+Nelle funzioni qualunque azione che eseguiamo sulle variabili non viene effettuata realmente alle nostre variabili, ma sono a una copia di esse, che sono variabili temporanee e che spariranno una volta che la funzione termina. Questo meccanismo si chiama <b>passaggio per valore</b>. Come esplicita il nome noi passiamo solo il valore attuale di quelle variabili, ma qualunque modifica eseguiamo non cambia il vero valore iniziale, ma solo la sua copia.
+Questo meccanismo è utile per preservare lo stato delle variabili e non commettere errori accidentali.
+
+Tuttavia in C++ abbiamo la possibilità di definire funzioni che accettano riferimenti alla memoria come parametri. Questo secondo meccanismo è detto <b>passaggio per riferimento</b>, e prevede l'utilizzo di parametri di tipo puntatore a variabile o variabili reference.
+
+	#include <iostream>
+	void swapPointer(int* a, int* b) //swap tramite utilizzo di puntatori
+	{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+	}
+	void swapReference(int& a, int& b) //swap tramite utilizzo di variabili reference
+	{
+	int tmp = a;
+	a = b;
+	b = tmp;
+	}
+	int main()
+	{
+	int x = 1;
+	int y = 2;
+	swapPointer(&x, &y);
+	std::cout << "x: " << x;
+	std::cout << "y: " << y;
+	swapReference(x, y);
+	std::cout << "x: " << x;
+	std::cout << "y: " << y;
+	return 0;
+	}
+
+Possiamo notare come l'utilizzo di variabili reference e quello di puntatori non cambia, però utilizzando le variabili reference avremo un codice decisamente più leggibile.
 
 
 ## PROCESSO DI COMPILAZIONE
