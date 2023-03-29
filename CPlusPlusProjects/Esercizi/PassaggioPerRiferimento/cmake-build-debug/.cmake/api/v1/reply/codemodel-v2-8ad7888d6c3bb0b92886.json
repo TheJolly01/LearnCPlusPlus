@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "PassaggioPerRiferimento",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "PassaggioPerRiferimento::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PassaggioPerRiferimento-Debug-a76d023477567ccba7e0.json",
+					"name" : "PassaggioPerRiferimento",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/PassaggioPerRiferimento/cmake-build-debug",
+		"source" : "C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/PassaggioPerRiferimento"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

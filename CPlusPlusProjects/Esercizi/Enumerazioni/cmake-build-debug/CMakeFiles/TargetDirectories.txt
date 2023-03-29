@@ -1,0 +1,3 @@
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Enumerazioni/cmake-build-debug/CMakeFiles/Enumerazioni.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Enumerazioni/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Enumerazioni/cmake-build-debug/CMakeFiles/rebuild_cache.dir

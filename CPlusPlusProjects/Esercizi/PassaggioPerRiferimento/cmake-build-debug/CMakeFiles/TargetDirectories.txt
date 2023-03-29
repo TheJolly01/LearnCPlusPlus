@@ -1,0 +1,3 @@
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/PassaggioPerRiferimento/cmake-build-debug/CMakeFiles/PassaggioPerRiferimento.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/PassaggioPerRiferimento/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/PassaggioPerRiferimento/cmake-build-debug/CMakeFiles/rebuild_cache.dir

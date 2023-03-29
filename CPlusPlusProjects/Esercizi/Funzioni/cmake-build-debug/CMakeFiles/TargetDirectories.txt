@@ -1,0 +1,3 @@
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Funzioni/cmake-build-debug/CMakeFiles/Funzioni.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Funzioni/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/delri/Documents/PRIVATE/CPlusPlusProjects/Esercizi/Funzioni/cmake-build-debug/CMakeFiles/rebuild_cache.dir
