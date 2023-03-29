@@ -342,6 +342,27 @@ Tuttavia in C++ abbiamo la possibilità di definire funzioni che accettano rifer
 
 Possiamo notare come l'utilizzo di variabili reference e quello di puntatori non cambia, però utilizzando le variabili reference avremo un codice decisamente più leggibile.
 
+#### Parametri opzionali
+
+Con C++ abiamo la possibilità di defnirie i cosiddetti parametri opzionali, quindi dei parametri che non sono richiesti obbligatoriamente, ma che possano comunque essere passati in caso di necessità. Questo tipo di parametro viene dichiarato in questo modo:
+
+	int nomeFunzione (int parOpzionale = valore);
+
+#### Overloading
+
+L'overloading è una caratteristica che permette di scrivere più volte una funzione con lo stesso nome, a patto che ci sia sempre un numero di parametri diversi.
+
+	int divisione (int dividendo, int divisore, int* resto = nullptr){...};
+	float divisione (flaot dividendo, float divisore){...};
+
+Ricordiamo che il valore di ritorno non è correlato all'overloading.
+
+#### Funzioni e procedure
+
+Le funzioni vengono chiamate con questo nome qunado hanno un tipo di ritorno al loro intero. Quando invece le funzioni non restituiscono niente si chiamano procedure. Le procedure avranno nella dichiarazione, come tipo di ritorno, il tipo void.
+
+
+
 
 ## PROCESSO DI COMPILAZIONE
 
