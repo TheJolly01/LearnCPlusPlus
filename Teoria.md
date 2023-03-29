@@ -361,8 +361,37 @@ Ricordiamo che il valore di ritorno non è correlato all'overloading.
 
 Le funzioni vengono chiamate con questo nome qunado hanno un tipo di ritorno al loro intero. Quando invece le funzioni non restituiscono niente si chiamano procedure. Le procedure avranno nella dichiarazione, come tipo di ritorno, il tipo void.
 
+### NAMESPACE
 
+Il costrutto namespace serve per definire delle variabili o funzioni che anche se hanno lo stesso nome di altre esistenti possono essere richiamate nello specifico senza errori tramite l'operatore di risoluizione di scope ::
 
+	namespace nomeNS
+	{
+		// definizione dei simboli
+		int a = 10;
+		int funct(int x){...};
+	}
+	
+	int main(){
+		nomeNS::funct(nomeNS::a); // invoca la funzione funct di nomeNS con a di nomeNS come parametro
+		return 0;
+	}
+
+È possibile utilizzare namespace su un determinato scope senza dover ripetere ogni volta l'operatore :: tramite la keyword using
+	
+	{
+		using namespace Hex;
+		printNumber(a);
+	}
+	{
+		using namespace Bin;
+		printNumber(a);
+	}
+	
+Possiamo anche utilizzare using per determinare solo un elemento da utilizzare senza ::
+
+	using std::cout
+	cout<<"Ciao"<<std::endl;
 
 ## PROCESSO DI COMPILAZIONE
 
