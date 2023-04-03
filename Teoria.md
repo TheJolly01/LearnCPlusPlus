@@ -402,3 +402,134 @@ Il processo di compilazione di C++ si articola in diverse fasi:
   2. Passa per il compilatore, che lo trasforma in un file assembly, con estensione .s
   3. Viene tradotto dall'assemblatore (o assembler) in codice oggetto con estensione .o
   4. Infine passa per il linker che lo rende finalmente un file eseguibile.
+
+## CLASSI E OGGETTI
+
+### CLASSI
+
+Le classi espandono l'insieme di tipi predefiniti dallo standard C++.
+Per la creazione di una classe in C++ utilizziamo il costrutto class secondo la seguente sintassi:
+
+#### Definizione di una classe e implementazione dei suoi metodi
+
+	class nomeClasse {
+		public:
+			// attributi accessibili esternamente alla classe
+		protected:
+			// attributi accessibili dalla classe e in tutte le sue derivate
+		private:
+			// membri accessibili solo dentro la classe
+		}
+Se non viene esplicitata la sezione di accesso, gli attributi della classe sono privati.
+
+Solitamente nei linguaggi ad oggetti troviamo definizione e implementazione dentro un unico file. In C++ è buona norma dividere questi elementi in 2 file. Quindi andremo ad inserire all'interno del file header la definizione, e, successivamente, inserire l'implementazione nell'altro file. Questi file sono chiamati col nome della classe e con estensione .h e .cpp
+
+Definiamo quindi il file .h della classe Point2D
+
+	// point2d.h
+	#ifndef POINT_2D_H
+	#define POINT_2D_H
+	namespace Geometry {
+		class Point2D;
+		}
+	class Geometry::Point2D
+	{
+		public:
+			double X();
+			void setX(double value);
+			double Y();
+			void setY(double value);
+			double distanceFrom(Point2D other);
+		private:
+			double x;
+			double y;
+	};
+	#endif // POINT_2D_H
+
+la definizione della classe è composta da le 3 include guards che fanno in modo che il file non venga incluso più volte durante la compilazione.
+Poi abbiamo dichiarato subit odopo il namespace Gemoetry.
+Definiamo poi la classe richiamandola dal namespace precedentemente dato. Volendo possiamo definire la classe dentro il namespace, oppure non dare un namespace, ma la scelta più saggia probabilmente è l'utilizzo di questo stile.
+La classe contiene attributi di tipo private e public.
+Quelli public sono 2 metodi getter e 2 setter per il controllo delle variabili private, e un meotodo distanceFrom.
+Quelli private sono 2 variabili di tipo double.
+Dopo la definizione della classe bisogna sempre mettere un ;
+
+Ora definiamo la stessa classe nel file .cpp
+
+	// point2d.cpp
+	#include "point2d.h"
+	#include <cmath>
+	double Geometry::Point2D::X() {
+		return x;
+	}
+	void Geometry::Point2D::setX(double value) {
+	if (!std::isnan(value) && !std::isinf(value))
+		x = value;
+	else
+		x = 0;
+	}
+	double Geometry::Point2D::Y() {
+		return y;
+	}
+	void Geometry::Point2D::setY(double value) {
+		if (!std::isnan(value) && !std::isinf(value))
+			y = value;
+		else
+			y = 0;
+	}
+	
+	double Geometry::Point2D::distanceFrom(Point2D other) {
+		return std::sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+	}
+
+In questo file dobbiamo includere il file header della classe e tutti gli altri header necessari.
+Le prime 4 funzioni sono dei metodi getter e setter che abbiamo dichiarato nell'header come metodi public e servono per poter leggere e modificare i valori privati in maniera controllata.
+
+In questo modo potremmo avere il metodo distanceFrom sempre valido e che non darà mai errore in quanto avrà sempre i valori x e y validi.
+
+#### Differenza tra class e struct
+
+Una Struct è un costrutto del linguaggio C, che se utilizzato in C++ viene tradotto automaticamente in fase di compilazione in una classe, con la differenza che qualunque suo attributo sia pubblico, quindi non potrà avere attributi privati o protetti.
+
+Ci sono però alcuni casi in cui non possiamo fare a meno di utilizzare struct, come quando ci serve poter integrare nel nostro programma librerie scritte in linguaggio C. In tali cirocstanze possiamo utilizzare alcuni strumenti previsti da C++
+
+-cstring che includefunzioni come std::malloc, std::memcpy, std::memmove, etc
+	
+- type_traits che include la funzione template std::is_pod per discriminare tra oggetti e POD (Plain Old Data).
+
+
+### COSTRUTTORI E DISTRUTTORI
+
+Per utilizzare un oggetto, servono due opzioni preliminari:
+
+- allocazione della memoria per tutti i suoi membri nello heap e nello stack
+- inizializzazione di questi membri
+
+Queste operazioni vengono svolte dal costruttore, che non è altro che una semplice funzione ma con una firma diversa, composta da:
+
+- nome del costruttore, che coincide con quello della classe
+- non presenta valore di ritorno
+
+Un costruttore può accettare più argomenti ed essere overloadato
+
+Quando un costruttore non accetta argomenti o sono tutti opzionali, il costruttore è detto default. Se non creiamo noi un costruttore, il compilatore lo crea automaticamente per noi. Però bisogna fare attenzione, in quanto potrebbe dare dei problemi, sopratutto con i puntatori.
+
+Ecco due esempi di costruttori, uno default e uno non default, all'interno dell'header:
+
+	Point2D(); // costruttore di default
+	
+	Point2D(double xValue, double yValue); // costruttore sovraccaricato
+
+Volendo possiamo usare il costruttore per altri scopi diversi da quelli dell'inizializzazione dell'oggetto, ma questa non è una buona pratica. Sempre meglio utilizzare una funzione apposita e utilizzare il costruttore solo per il suo scopo.
+
+Ecco l'esempio di costruttore, non default, all'interno del file .cpp:
+
+	Geometry::Point2D::Point2D(double xVal, double yVal)
+	{
+		setX(xVal);
+		setY(yVal);
+	}
+	
+	
+	
+## OPERATORI
