@@ -529,7 +529,34 @@ Ecco l'esempio di costruttore, non default, all'interno del file .cpp:
 		setX(xVal);
 		setY(yVal);
 	}
-	
+
+#### Distruggere gli oggetti
+Il distruttore di classe serve per rilasciare le risorse associate ad un oggetto quando non è più necessario.
+La firma del distruttore ha una sintassi particolare: 
+- il nome del distruttore coincide con quello della classe preceduto dal carattere ~
+- non ha valore di ritorno, nè parametri
+- non può essere overloadato
+
+Come per il costruttore, anche il distruttore può avere operazioni al suo interno come una normale funzione, però per sicurezza è sempre meglio evitare queste pratiche.
+
+Il distruttore viene invocato automaticamente quando finisce un campo di visibilità di un Oggetto e tutte le volte che vengono deallocate le variabili dinamiche con delete.
+
+Come per il costruttore, esiste un distruttore default, tuttavia però bisogna fare attenzione in quanto questo non andrà a deallocare eventuali reference o se l'oggetto fa uso di altre risorse come file o interfacce I/O. Potrebbe dunque essere necessaria qualche altra operazione aggiuntiva per il rilascio di questi.
+
+	class A{
+		public:
+			A(); //costruttore
+			~A(); //distruttore
+		}
+
+Dobbiamo imparare bene ad utilizzare un distruttore, in quanto la memoria allocata e non correttamente rilasciata aggrava la frammentazione dello heap, cioè la mancanza di grandi blocchi di memoria libera. Questo può abbassare le prestazioni del programma e difficile la rilevazione del problema.
+
+### COPIA DI OGGETTI
+C++ prevede uno strumento apposito per effettuare la copia degli oggetti, cioè il costruttore di copia. Esso condivide la stessa particolarità della firma di un costruttore, ma il primo dei suoi parametri è una reference ad un oggetto della stessa classe, e i parametri aggiuntivi sono opzionali.
+Il compilatore crea un costruttore di copia default in caso non sia creato dallo sviluppatore.
+
+
+
 	
 	
 ## OPERATORI
