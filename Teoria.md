@@ -446,7 +446,7 @@ Definiamo quindi il file .h della classe Point2D
 	};
 	#endif // POINT_2D_H
 
-la definizione della classe è composta da le 3 include guards che fanno in modo che il file non venga incluso più volte durante la compilazione.
+la definizione della classe è composta dai 3 include guards (#ifndef, #define e #endif) che fanno in modo che il file non venga incluso più volte durante la compilazione.
 Poi abbiamo dichiarato subit odopo il namespace Gemoetry.
 Definiamo poi la classe richiamandola dal namespace precedentemente dato. Volendo possiamo definire la classe dentro il namespace, oppure non dare un namespace, ma la scelta più saggia probabilmente è l'utilizzo di questo stile.
 La classe contiene attributi di tipo private e public.
